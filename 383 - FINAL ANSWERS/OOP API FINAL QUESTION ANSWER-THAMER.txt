@@ -1,0 +1,40 @@
+<?
+class OOPAPI{
+    public function __construct($conn)
+    {
+        $this->database = $conn;
+        $this->dbConnect = $this->db->connect();
+    }
+
+    public function getAPI(){
+        $where = " ";
+
+        $s_id = $_GET['state_id'];
+        $c_id = $_GET['country_id'];
+
+        $query = "SELECT * FROM 'cities' WHERE state_id = '$s_id'";
+        $r = $this->dbconnet->prepare($query);
+        $r->execute();
+        $city = $result->fetch(PDO::FETCH_ASSOC);
+
+        if (!$data) {
+            return $this->JSONResponse('404', 'No Data found', null);
+        } else {
+            return $this->JSONResponse('200', 'OK', $city);
+        }
+
+
+    }
+
+    function JSON($stat, $msg, $data ){
+      header("HTTP/1.2 ".$msg);
+      $response['status'] = $status;
+      $response['message'] = $msg;
+      $response['data'] = $data;
+
+
+      print_r(json_encode($response));
+
+    }
+
+}

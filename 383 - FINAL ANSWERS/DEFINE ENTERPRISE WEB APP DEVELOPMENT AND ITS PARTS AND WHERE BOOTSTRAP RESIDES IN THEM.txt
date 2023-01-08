@@ -1,0 +1,7 @@
+a web application development process that emphasis on maintainability and scalability ﻿﻿﻿. its split in two parts:
+
+1- front end: user interface elements that interact with the users, and displays results from the back-end queries and processes
+
+2- back-end: it contains the database and the application assets, and interfaces with the resources needed in the front end
+
+the bootstrap framework library files reside in the back end to be served to the front end , when requested

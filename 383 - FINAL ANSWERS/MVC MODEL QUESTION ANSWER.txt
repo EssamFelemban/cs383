@@ -1,0 +1,64 @@
+<?php
+
+class Inventory{
+
+private $id;
+private $itemName;
+private $stockQuantity;
+private $orderedQuantity;
+
+private $db;
+private $dbconnect;
+
+public function __construct($conn){
+    $this->db = $conn;
+    $this->dbConnect = $this->db->connect();
+  }
+
+public function itemName(){
+$query = "SELECT item_name from inventory";
+$r= $this->dbConnect->prepare($query);
+$r->execute();
+
+while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    $data[]= array($row['item_name']);
+}
+    return $data;
+}
+
+public function stockQuantity(){
+    $query = "SELECT stock_quantity from inventory";
+    $r= $this->dbConnect->prepare($query);
+    $r->execute();
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        $data[]= array($row['stock_quantity']);
+    }
+        return $data;
+    }
+
+
+    public function orderedQuantity(){
+        $query = "SELECT ordered_quantity from inventory";
+        $r= $this->dbConnect->prepare($query);
+        $r->execute();
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+            $data[]= array($row['stock_quantity']);
+        }
+            return $data;
+        }
+
+
+
+
+
+function avaliabeQuantity(){
+    $stockQuantity = stockQuantity();
+    $orderedQuantity= orderedQuantity();
+$avalibaleQ = $stockQuantity - $orderedQuantity;
+
+return $avalibaleQ;
+}
+
+}

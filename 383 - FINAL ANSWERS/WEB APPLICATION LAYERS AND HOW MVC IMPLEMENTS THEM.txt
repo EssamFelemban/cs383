@@ -1,0 +1,19 @@
+web application layers:
+
+1- presentation layer﻿﻿﻿
+
+2- business logic layer
+3- data layer
+MVC implementation of:
+a-   presentation layer﻿﻿﻿: 
+the MVC implementation the presentation layer in the View, where the all the UI elements are displayed to the user, and any responses is displayed there as well. 
+
+b-  business logic layer:
+
+its implemented in the Controller, where the controller handles the user requests coming from the View, then sends the data request to the Model.
+
+it applies the business logic on the request and their processing
+
+c-  data layer:
+
+its implementation is in the Model part of the MVC. where direct interactions with the database and the queries run on it are seperated from the View and the Controller

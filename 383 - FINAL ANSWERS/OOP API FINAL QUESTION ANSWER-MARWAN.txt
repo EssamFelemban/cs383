@@ -1,0 +1,39 @@
+<?
+class api{
+    public function __construct($conn)
+    {
+        $this->db = $conn;
+        $this->dbconn = $this->db->connect();
+    }
+
+    public function getAPI(){
+        $where = " ";
+        $country_id = $_POST['country_id'];
+        $state_id = $_POST['state_id'];
+
+        $query = "SELECT * FROM 'cities' WHERE country_id = '$state_id'";
+        $result = $this->dbconn->prepare($query);
+        $result->execute();
+        $cities = $result->fetch(PDO::FETCH_ASSOC);
+
+        if (!$data) {
+            return $this->jasonResponse('404', 'No Data found', null);
+        } else {
+            return $this->jasonResponse('200', 'OK', $cities);
+        }
+
+
+    }
+
+    function jasonResponse($status, $message, $data ){
+      header("HTTP/1.2 ".$message);
+      $response['status'] = $status;
+      $response['message'] = $message;
+      $response['data'] = $data;
+
+
+      print_r(json_encode($response));
+
+    }
+
+}
